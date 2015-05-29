@@ -253,6 +253,9 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' && module.ex
         initChart();
         if (scope.disableDataWatch) {
           scope.$watchCollection('config.series', function (newSeries, oldSeries) {
+            if(newSeries){
+              ensureIds(newSeries);
+            }
             processSeries(newSeries);
             chart.redraw();
           });
